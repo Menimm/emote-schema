@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jaxb:bindings xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" version="2.0">
+  <!--
+
+  <jaxb:globalBindings>
+  	<jaxb:javaType name="java.lang.Integer" xmlType="xs:integer" />
+  </jaxb:globalBindings>
+  <jaxb:globalBindings>
+    <jaxb:javaType
+      name="java.lang.Integer"
+
+    />
+  </jaxb:globalBindings>
+     -->
+  <jaxb:bindings schemaLocation="../xsd/ENRC.xsd" node="//xs:schema">
+    <jaxb:schemaBindings>
+      <jaxb:package name="com.halkow.emote.schema"/>
+    </jaxb:schemaBindings>
+
+    <jaxb:bindings node="/xs:schema/xs:element[@name='emotivaControl']/xs:complexType/xs:choice">
+      <jaxb:property name="Children"/>
+    </jaxb:bindings>
+
+    <jaxb:bindings node="/xs:schema/xs:element[@name='emotivaSubscription']/xs:complexType/xs:choice">
+      <jaxb:property name="Children"/>
+    </jaxb:bindings>
+
+  </jaxb:bindings>
+</jaxb:bindings>

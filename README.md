@@ -1,0 +1,1 @@
+# Emote Schema Definitions

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="qualified"
+  targetNamespace="">
+  <xs:element name="emotivaPing">
+    <xs:complexType/>
+  </xs:element>
+
+  <xs:simpleType name="yes-no">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="yes"/>
+      <xs:enumeration value="no"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ack">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="ack"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:element name="emotivaTransponder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="model" type="xs:string"/>
+        <xs:element name="name" type="xs:string"/>
+        <xs:element name="control">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="version" type="xs:string"/>
+              <xs:element name="controlPort" type="xs:integer"/>
+              <xs:element name="notifyPort" type="xs:integer"/>
+              <xs:element name="infoPort" type="xs:integer"/>
+              <xs:element name="setupPortTCP" type="xs:integer"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="emotivaControl">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element name="power_on">
+          <xs:complexType>
+            <xs:attribute name="value" type="xs:integer"/>
+            <xs:attribute name="ack" type="yes-no"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="emotivaAck">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element name="power_on">
+          <xs:complexType>
+            <xs:attribute name="status" type="xs:integer"/>
+            <xs:attribute name="ack" type="ack"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="emotivaSubscription">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element name="power">
+          <xs:complexType/>
+        </xs:element>
+        <xs:element name="volume">
+          <xs:complexType/>
+        </xs:element>
+        <xs:element name="zone2_power">
+          <xs:complexType/>
+        </xs:element>
+        <xs:element name="source">
+          <xs:complexType/>
+        </xs:element>
+        <xs:element name="mode">
+          <xs:complexType/>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="emotivaNotify">
+    <xs:complexType>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="emotivaUnsubscribe">
+    <xs:complexType>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="emotivaUpdate">
+    <xs:complexType>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
